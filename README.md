@@ -39,7 +39,7 @@ This website is designed as a modern portfolio showcasing various services and l
 3. Open your browser and visit:
 
    ```text
-   http://localhost:8082
+   http://localhost:8080
    ```
 
 The container uses Nginx to serve the static files from this repository.

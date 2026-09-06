@@ -11,6 +11,12 @@ pnpm-lock.yaml
 # Docker files themselves
 Dockerfile
 .dockerignore
+docker-compose*.yml
+
+# Docs and meta files
+README.md
+*.md
+wpad.dat
 
 # Editor/OS junk
 .vscode

@@ -1,45 +1,66 @@
 #form-container {
-    display: flex; /* Use flexbox for alignment */
-    align-items: center; /* Center items vertically */
-    margin-bottom: 10px; /* Add margin for spacing */
+    display: flex;
+    /* Use flexbox for alignment */
+    align-items: center;
+    /* Center items vertically */
+    margin-bottom: 10px;
+    /* Add margin for spacing */
 }
 
 #search-input {
     background-color: transparent !important;
-    border: 1px solid #ced4da !important; /* Gray border */
-    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ced4da !important;
+    /* Gray border */
+    border-radius: 5px;
+    /* Rounded corners */
 }
 
 #search-input:focus {
-    border-color: #80bdff !important; /* Blue border when input is focused */
+    border-color: #80bdff !important;
+    /* Blue border when input is focused */
 }
 
 #search-engine-logo {
-    width: auto; /* Adjusted width to fill the container */
-    height: auto; /* Allows the height to adjust proportionally */
-    max-width: 50px; /* Limits the width to the desired size */
-    max-height: 50px; /* Limits the height to the desired size */
-    background-color: #e9ecef; /* Light gray background color for the logo container */
-    margin-right: 5px; /* Add spacing between logo and input */
-    object-fit: contain; /* Ensures the image fits within the specified dimensions */
+    width: auto;
+    /* Adjusted width to fill the container */
+    height: auto;
+    /* Allows the height to adjust proportionally */
+    max-width: 50px;
+    /* Limits the width to the desired size */
+    max-height: 50px;
+    /* Limits the height to the desired size */
+    background-color: #e9ecef;
+    /* Light gray background color for the logo container */
+    margin-right: 5px;
+    /* Add spacing between logo and input */
+    object-fit: contain;
+    /* Ensures the image fits within the specified dimensions */
 }
 
 #google-submit-button {
-    background-color: #007bff; /* Blue background color for the search button */
-    border-color: #007bff; /* Blue border color for the search button */
-    border-radius: 5px; /* Rounded corners */
+    background-color: #007bff;
+    /* Blue background color for the search button */
+    border-color: #007bff;
+    /* Blue border color for the search button */
+    border-radius: 5px;
+    /* Rounded corners */
 }
 
 #google-submit-button:hover {
-    background-color: #0056b3; /* Darker blue background color on hover */
-    border-color: #0056b3; /* Darker blue border color on hover */
+    background-color: #0056b3;
+    /* Darker blue background color on hover */
+    border-color: #0056b3;
+    /* Darker blue border color on hover */
 }
 
 
 #search-engine {
-    background-color: #f8f9fa !important; /* Light gray background color for the dropdown */
-    border: 1px solid #ced4da !important; /* Gray border color for the dropdown */
-    border-radius: 5px; /* Rounded corners */
+    background-color: #f8f9fa !important;
+    /* Light gray background color for the dropdown */
+    border: 1px solid #ced4da !important;
+    /* Gray border color for the dropdown */
+    border-radius: 5px;
+    /* Rounded corners */
 }
 
 
@@ -50,8 +71,10 @@
 }
 
 .table-container .table-responsive {
-    width: calc(100% / 3 - 10px);   /* Divide the width equally among 3 tables and subtract margin */
-    margin-right: 10px; /* Adjust margin as needed */
+    width: calc(100% / 3 - 10px);
+    /* Divide the width equally among 3 tables and subtract margin */
+    margin-right: 10px;
+    /* Adjust margin as needed */
 }
 
 #imageContainers img {
@@ -77,7 +100,8 @@
 
 /* Custom style for navbar text */
 .navbar-nav .nav-link {
-    color: #333 !important; /* Darker color for the navbar text */
+    color: #333 !important;
+    /* Darker color for the navbar text */
 }
 
 /* ---- Mobile responsiveness (Screens smaller than 576px) ---- */
