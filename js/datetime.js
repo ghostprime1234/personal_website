@@ -2,7 +2,8 @@ function time() {
     // 1. Define target timezones
     const timezones = [
         { label: "Sydney", tz: "Australia/Sydney" },
-        { label: "Brisbane", tz: "Australia/Brisbane" }
+        { label: "Brisbane", tz: "Australia/Brisbane" },
+        { label: "Seattle", tz: "America/Los_Angeles" }
     ];
 
     const now = new Date();
@@ -17,9 +18,9 @@ function time() {
             minute: 'numeric',
             second: 'numeric',
             weekday: 'long',
-            day: 'numeric',
-            month: 'short',
-            year: 'numeric',
+            day: '2-digit',
+            month: '2-digit',
+            year: '2-digit',
             timeZoneName: 'short' // Safely gets abbreviations directly like AEST or ADT
         });
 
