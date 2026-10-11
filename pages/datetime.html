@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script type="text/javascript" src="../js/datetime.js?v=2">
-
-    </script>
-    <title>datetime.html</title>
-  </head>
-  <body onload="time()">
-    <div style="font-weight:bold" id="text"></div>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            /* Matches Bootstrap font stack */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #212529; /* Standard Bootstrap body color */
+            -webkit-font-smoothing: antialiased;
+        }
+        .clock-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 24px;
+            white-space: nowrap;
+        }
+        .clock-item {
+            font-size: 14px; /* Standard Bootstrap secondary/small size (0.875rem) */
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+        .clock-item strong {
+            font-weight: 600;
+            color: #111;
+        }
+    </style>
+    <script type="text/javascript" src="../js/datetime.js?v=26"></script>
+</head>
+<body>
+    <div id="text"></div>
+</body>
 </html>

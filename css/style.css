@@ -200,22 +200,51 @@
     header .d-flex {
         flex-direction: row;
         align-items: center;
+        justify-content: space-between;
     }
 
-    /* High-specificity selector beats Bootstrap's generic flex rules.
-       min-width prevents the flex shrink algorithm from ignoring width. */
+    /* Horizontal layout dimensions */
     header .d-flex iframe.datetime-frame {
-        width: 390px;
-        min-width: 390px;
-        height: 115px;         /* 🚀 Changed from 200px to perfectly fit header boundaries */
-        min-height: 115px;     /* 🚀 Changed from 200px to avoid parent overflow clipping */
+        width: 620px !important;
+        min-width: 620px !important;
+        height: 52px !important;
+        min-height: 52px !important;
         flex-shrink: 0;
         flex-grow: 0;
         display: block;
-        overflow: hidden !important; /* Forces scroll tracks out of existence */
+        overflow: hidden !important;
     }
 
     h1.title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+    }
+}
+/* Dynamic vertical clock layout */
+.datetime-container {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+.clock-vertical-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.clock-entry {
+    font-size: 0.875rem; /* 14px matches Bootstrap navbar/secondary scale */
+    line-height: 1.35;
+    color: #212529;
+}
+
+.clock-entry strong {
+    font-weight: 600;
+}
+
+@media (max-width: 576px) {
+    .clock-entry {
+        text-align: center;
     }
 }
