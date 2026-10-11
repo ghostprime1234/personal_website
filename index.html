@@ -6,7 +6,7 @@
         <title>Modern Portfolio</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         
-        <link rel="stylesheet" href="/css/style.css?v=4">
+        <link rel="stylesheet" href="/css/style.css?v=30">
         <link rel="icon" type="image/png" href="/images/icons/favicon.ico">
         <script src="/js/search.js?v=2"></script>
         
@@ -17,9 +17,14 @@
     <body>
         <header class="bg-light py-3">
             <div class="container">
-                <div class="header-wrapper d-flex align-items-center">
-                    <iframe class="datetime-frame mr-md-3" src="/pages/datetime.html?t=2" style="border:0;" scrolling="no"></iframe>
-                    <h1 class="title mb-0">Modern Portfolio</h1>
+                <div class="header-wrapper d-flex align-items-center justify-content-between">
+                    <div style="flex: 1 1 0;" class="d-flex justify-content-start">
+                        <div id="datetime-clock" class="datetime-container"></div>
+                    </div>
+                    <div style="flex: 2 1 0;" class="text-center">
+                        <h1 class="title mb-0">Modern Portfolio</h1>
+                    </div>
+                    <div style="flex: 1 1 0;" class="d-none d-md-block"></div>
                 </div>
             </div>
         </header>
@@ -242,5 +247,6 @@
         <footer class="footer bg-light text-center py-3">
             <p>&copy; <span id="copyright-year">2024</span> Modern Portfolio. All rights reserved.</p>
         </footer>
-    </body>
+    <script src="/js/datetime.js?v=30"></script>
+</body>
 </html>

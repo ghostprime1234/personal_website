@@ -1,5 +1,4 @@
 function time() {
-    // 1. Define target timezones
     const timezones = [
         { label: "Sydney", tz: "Australia/Sydney" },
         { label: "Brisbane", tz: "Australia/Brisbane" },
@@ -7,10 +6,9 @@ function time() {
     ];
 
     const now = new Date();
-    let displayHTML = "";
+    let displayHTML = '<div class="clock-vertical-stack">';
 
-    timezones.forEach((tzData, index) => {
-        // 2. Strict component formatting options
+    timezones.forEach((tzData) => {
         const formatter = new Intl.DateTimeFormat('en-AU', {
             timeZone: tzData.tz,
             hour12: false,
@@ -20,47 +18,51 @@ function time() {
             weekday: 'long',
             day: '2-digit',
             month: '2-digit',
-            year: '2-digit',
-            timeZoneName: 'short' // Safely gets abbreviations directly like AEST or ADT
+            year: '2-digit'
         });
 
         const parts = formatter.formatToParts(now);
         const v = {};
         parts.forEach(({type, value}) => { v[type] = value; });
 
-        // 3. Process 12-hour formatting math manually
         let hour24 = parseInt(v.hour);
         let period = hour24 >= 12 ? "PM" : "AM";
-        
-        let hour12 = hour24;
-        if (hour12 === 0) {
-            hour12 = 12;
-        } else if (hour12 > 12) {
-            hour12 = hour12 - 12;
-        }
+        let hour12 = hour24 % 12 || 12;
 
-        // 4. Formatting strings
         let name_weekday = v.weekday.slice(0, 3).toUpperCase();
-        let day = ("0" + v.day).slice(-2); 
+        let day = ("0" + v.day).slice(-2);
         let month = v.month.toUpperCase();
         let year = v.year;
-        let timezoneAbbreviation = v.timeZoneName ? v.timeZoneName.toUpperCase() : "AEST";
 
-        // 5. Zero-pad components
+        let timezoneAbbreviation = "";
+        if (tzData.tz === "Australia/Sydney") {
+            const isDST = new Intl.DateTimeFormat('en-AU', { timeZone: tzData.tz, timeZoneName: 'short' })
+                .formatToParts(now).some(p => p.type === 'timeZoneName' && (p.value.includes('AEDT') || p.value.includes('+11')));
+            timezoneAbbreviation = isDST ? "AEDT" : "AEST";
+        } else if (tzData.tz === "Australia/Brisbane") {
+            timezoneAbbreviation = "AEST";
+        } else if (tzData.tz === "America/Los_Angeles") {
+            const usTz = new Intl.DateTimeFormat('en-US', { timeZone: tzData.tz, timeZoneName: 'short' })
+                .formatToParts(now).find(p => p.type === 'timeZoneName')?.value || "";
+            timezoneAbbreviation = usTz.toUpperCase();
+            if (timezoneAbbreviation === "GMT-7") timezoneAbbreviation = "PDT";
+            if (timezoneAbbreviation === "GMT-8") timezoneAbbreviation = "PST";
+        }
+
         let hourStr = update(hour12);
         let minuteStr = update(v.minute);
         let secondStr = update(v.second);
 
-        // 6. Build the text rows cleanly
-        displayHTML += `<strong>${tzData.label}:</strong> ${name_weekday} ${day} ${month} ${year}<br/>${hourStr}:${minuteStr}:${secondStr} ${period} timezone ${timezoneAbbreviation}`;
-        
-        if (index < timezones.length - 1) {
-            displayHTML += "<br/><br/>";
-        }
+        displayHTML += `
+            <div class="clock-entry">
+                <strong>${tzData.label}:</strong> ${name_weekday} ${day}/${month}/${year}<br/>
+                ${hourStr}:${minuteStr}:${secondStr} ${period} timezone ${timezoneAbbreviation}
+            </div>`;
     });
 
-    // 7. Push once to DOM container
-    const clockElement = document.getElementById("text");
+    displayHTML += '</div>';
+
+    const clockElement = document.getElementById("datetime-clock") || document.getElementById("text");
     if (clockElement) {
         clockElement.innerHTML = displayHTML;
     }
@@ -70,11 +72,7 @@ function time() {
 
 function update(t) {
     let num = parseInt(t);
-    if (num < 10) {
-        return "0" + num;
-    } else {
-        return num;
-    }
+    return num < 10 ? "0" + num : num;
 }
 
 document.addEventListener('DOMContentLoaded', time);
